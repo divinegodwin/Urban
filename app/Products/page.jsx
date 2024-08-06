@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Loader from "../Loader";
 
-const Products = () => {
+const Products = () => {   
 
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
