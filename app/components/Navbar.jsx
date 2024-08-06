@@ -39,7 +39,7 @@ const Navbar = () => {
        
       </main>
 
-      <nav className={isOpen ? ' nav absolute w-full top-0 flex flex-col mt-[3rem] max-h-[200px] bg-white shadow-sm items-center pt-4 text-md' : 'close hidden' }>
+      <nav className={isOpen ? ' nav fixed w-full top-0 flex flex-col mt-[3rem] max-h-[200px] bg-white shadow-sm items-center pt-4 text-md' : 'close hidden' }>
             <ul >
               <li className='p-2'>Products</li>
               <li className='p-2'>About</li>
