@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 const page = () => {
   const router = useRouter();
 
@@ -35,7 +36,9 @@ const [displayImage, setDisplayimage] = useState(0)
 
   return (
     <div className="mt-[6rem]">
+      <Link href='/Products'>
       <p className="text-[#1746c3] text-lg font-bold float-right pr-10">skip</p>
+      </Link>
       <div>
         <Image
           src={Images[displayImage].src}
