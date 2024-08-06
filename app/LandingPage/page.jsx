@@ -1,14 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-
-
 import { useRouter } from "next/navigation";
 const page = () => {
   const router = useRouter();
 
   const GetStarted = ()=>{
-    setIsLoading(true)
+    
     router.push('./Products')
   }
 
@@ -63,6 +61,7 @@ const [displayImage, setDisplayimage] = useState(0)
         )
 }
       </div>
+      
     </div>
   );
 };
