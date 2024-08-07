@@ -21,7 +21,7 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    
     const { username, email, password } = formData;
     if ((username || email || password) == "") {
       setError("all input fields must be filled");
@@ -37,6 +37,7 @@ const Signup = () => {
     
 
     try {
+      setLoading(true)
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -81,7 +82,7 @@ const Signup = () => {
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
           />
         </div>
-        { <Loader />}
+        {loading && <Loader />}
         <div className="mb-6">
           <input
             type="password"
