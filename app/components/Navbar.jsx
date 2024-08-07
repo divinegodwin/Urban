@@ -2,12 +2,27 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import supabase from "../supabaseClient";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+
+  const router = useRouter()
+
   const [isOpen, setOpen] = useState(false);
   const ShowNavigation = () => {
     setOpen(!isOpen);
   };
+
+  const handleLogout = async () =>{
+      const{error} = await supabase.auth.signOut()
+      if(error){
+        console.log('error logging out', error)
+      }else{
+        router.push('/Auth/Login')
+      }
+  }
+
   return (
     <div>
       <main className="bg-[#ffff] h-[60px] fixed top-0 w-full shadow-lg p-4 flex justify-between items-center">
@@ -59,7 +74,7 @@ const Navbar = () => {
           </Link>
           <li className="p-2">About</li>
           <li className="p-2">Contact</li>
-          <button className="center p-3 bg-[#1746c3] h-[50px] text-white rounded-lg">Logout</button>
+          <button onClick={handleLogout} className="center p-3 bg-[#1746c3] h-[50px] text-white rounded-lg">Logout</button>
         </ul>
       </nav>
     </div>
