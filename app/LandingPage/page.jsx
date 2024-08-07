@@ -9,10 +9,17 @@ const page = () => {
 
   useEffect(()=>{
     const checkSession = async()=>{
+     
       const session = await supabase.auth.getSession()
       if(session){
+
+        const {error} = await supabase.auth.getUser()
+        if(error){
+          await supabase.auth.signOut()
+        }else{
         router.push('/Products')
       }
+    }
     }
     checkSession()
   },[router])
