@@ -19,6 +19,7 @@ const Navbar = () => {
       if(error){
         console.log('error logging out', error)
       }else{
+        localStorage.removeItem('sessionToken');
         router.push('/Auth/Login')
       }
   }

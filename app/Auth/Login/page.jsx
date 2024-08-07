@@ -62,6 +62,7 @@ const Login = () => {
       }
 
       if (data) {
+        console.log(data)
         router.push("/Products");
       }
     } catch (error) {

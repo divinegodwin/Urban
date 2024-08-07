@@ -51,6 +51,8 @@ const Signup = () => {
           emailRedirectTo: 'https://checkurban.netlify.app/Products'
         },
       });
+      console.log(localStorage.getItem('sessionToken'))
+
       alert("check your email for verification");
     } catch (error) {
       console.log(error);
