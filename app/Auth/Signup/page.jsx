@@ -28,13 +28,17 @@ const Signup = () => {
       return;
     }
 
-    let regex =
+    let passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
-    if (regex.test(password) == false && password.length < 8) {
+    if (!passwordRegex.test(password) && password.length < 8) {
       setError("use a strong password");
       return;
     }
-    
+    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!emailRegex.test(email)) {
+      setError("use a valid email");
+      return;
+    }
 
     try {
       setLoading(true)
@@ -61,7 +65,7 @@ const Signup = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
-        {error && <p>{error}</p>}
+        {error && <p className="text-red-500">{error}</p>}
         <div className="mb-4">
           <input
             type="text"
