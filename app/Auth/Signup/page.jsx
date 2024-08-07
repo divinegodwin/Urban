@@ -13,6 +13,8 @@ const Signup = () => {
   //const [notificationRecieved, setNotificationRecieved] = useState(false)
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
+
+ 
   function handleChange(e) {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -52,6 +54,7 @@ const Signup = () => {
       alert("check your email for verification");
     } catch (error) {
       console.log(error);
+      setError('no user found')
     }finally{
       setError('')
         setLoading(false)

@@ -2,71 +2,81 @@
 import React, { useState, useEffect } from "react";
 import supabase from "@/app/supabaseClient";
 import Loader from "@/app/Loader";
-import Link from "next/link"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
-    const router = useRouter()
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  //const [notificationRecieved, setNotificationRecieved] = useState(false)
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkSession = async () => {
-      const session = supabase.auth.getSession();
+      const { data: session, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) {
+        console.error('Session error:', sessionError);
+        return;
+      }
       if (session) {
-        router.push('/Products');
+        const { data: user, error: userError } = await supabase.auth.getUser();
+        if (userError) {
+          await supabase.auth.signOut();
+        } else {
+          router.push("/Products");
+        }
       }
     };
     checkSession();
   }, [router]);
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
-  }
-  
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
-    if ((email || password) == "") {
-      setError("all input fields must be filled");
+    if (!email || !password) {
+      setError("All input fields must be filled");
       return;
     }
     try {
-      setLoading(true)
-      
-const { data, error } = await supabase.auth.signInWithPassword({
-    email: formData.email,
-    password: formData.password                ,
-  })
-  router.push('/Products')
-  if(error){
-    setError('No account found')
-  }
-    
+      setLoading(true);
+      setError(""); // Clear previous error messages
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setError("No account found or incorrect credentials");
+        return;
+      }
+
+      if (data) {
+        router.push("/Products");
+      }
     } catch (error) {
-        setError('You do not have an account, please create one')
+      setError("An error occurred during login. Please try again.");
       console.log(error);
-    }finally{
-      setError('')
-        setLoading(false)
-      
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">SignIn</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
         {error && <p className="text-red-500 text-lg">{error}</p>}
-      
         <div className="mb-4">
           <input
             type="email"
@@ -94,8 +104,13 @@ const { data, error } = await supabase.auth.signInWithPassword({
         >
           Sign In
         </button>
-        <p className="text-center pt-4">Don't have an account?<Link href='/Auth/Signup'> <span className="text-[#1746c3]">SignUp</span></Link></p>
-
+        <p className="text-center pt-4">
+          Don't have an account?
+          <Link href="/Auth/Signup">
+            {" "}
+            <span className="text-[#1746c3]">Sign Up</span>
+          </Link>
+        </p>
       </div>
     </div>
   );
