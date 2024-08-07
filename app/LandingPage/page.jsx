@@ -56,11 +56,13 @@ const [displayImage, setDisplayimage] = useState(0)
         )
         :(
 
+          <Link href='Auth/Signup'>
         <button
         onClick={GetStarted}
          className="bg-[#1746c3] text-white w-[120px] h-[50px] rounded-full float-right mr-10 mt-14">
           Get Started
         </button>
+        </Link>
         )
 }
       </div>
