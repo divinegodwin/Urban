@@ -54,10 +54,12 @@ const Navbar = () => {
         }
       >
         <ul>
+          <Link href='/Products'>
           <li className="p-2">Products</li>
+          </Link>
           <li className="p-2">About</li>
           <li className="p-2">Contact</li>
-          <li className="p-2">Login</li>
+          <li className="p-2">Logout</li>
         </ul>
       </nav>
     </div>
