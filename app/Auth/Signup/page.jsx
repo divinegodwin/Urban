@@ -46,7 +46,7 @@ const Signup = () => {
           data: {
             user_name: formData.username,
           },
-          emailRedirectTo: 'https://checkurban.netlify.app/products'
+          emailRedirectTo: 'https://checkurban.netlify.app/Products'
         },
       });
       alert("check your email for verification");
