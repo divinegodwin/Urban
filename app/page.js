@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar />
+      
       <LandingPage />
      
       {/* Pass cart and addToCart to other components if needed */}
