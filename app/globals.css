@@ -4,7 +4,8 @@
 
 
 .loader {
-    margin-top: 20rem;
+   justify-content: center;
+   left:10rem;
     width: 40px;
     height: 20px;
     --c:no-repeat radial-gradient(farthest-side,#1746c3 93%,#0000);
@@ -12,7 +13,7 @@
       var(--c) 0    0,
       var(--c) 50%  0;
     background-size: 8px 8px;
-    position: relative;
+    position: absolute;
     clip-path: inset(-200% -100% 0 0);
     animation: l6-0 1.5s linear infinite;
   }
