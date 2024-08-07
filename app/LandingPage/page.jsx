@@ -1,11 +1,22 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import supabase from "../supabaseClient";
+
 const page = () => {
   const router = useRouter();
 
+  useEffect(()=>{
+    const checkSession = async()=>{
+      const session = await supabase.auth.getSession()
+      if(session){
+        router.push('/Products')
+      }
+    }
+    checkSession()
+  },[router])
+  
   const GetStarted = ()=>{
     
     router.push('./Auth/Signup')

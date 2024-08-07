@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import supabase from "@/app/supabaseClient";
 import Loader from "@/app/Loader";
 import Link from "next/link"
@@ -14,12 +14,24 @@ const Login = () => {
   //const [notificationRecieved, setNotificationRecieved] = useState(false)
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const session = supabase.auth.getSession();
+      if (session) {
+        router.push('/Products');
+      }
+    };
+    checkSession();
+  }, [router]);
+
   function handleChange(e) {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
   }
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
