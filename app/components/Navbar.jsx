@@ -49,7 +49,7 @@ const Navbar = () => {
       <nav
         className={
           isOpen
-            ? " nav fixed w-full top-0 flex flex-col mt-[3rem] max-h-[200px] bg-white shadow-sm items-center pt-4 text-md"
+            ? " nav fixed w-full top-0 flex flex-col mt-[3rem] h-[220px] bg-white shadow-sm items-center pt-4 text-md"
             : "close hidden"
         }
       >
@@ -59,7 +59,7 @@ const Navbar = () => {
           </Link>
           <li className="p-2">About</li>
           <li className="p-2">Contact</li>
-          <li className="p-2">Logout</li>
+          <button className="center p-3 bg-[#1746c3] h-[50px] text-white rounded-lg">Logout</button>
         </ul>
       </nav>
     </div>

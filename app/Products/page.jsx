@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Loader from "../Loader";
+import ProductLoader from "@/ProductLoader";
 import Navbar from "../components/Navbar";
 import ErrorPage from "../Error/page";
 
@@ -32,7 +32,7 @@ const Products = ({ addToCart }) => {
       <Navbar />
       {error && <ErrorPage />}
       {isLoading ? (
-        <div className="flex justify-center"><Loader /></div>
+        <div className="flex justify-center"><ProductLoader /></div>
       ) : (
         <div className="grid grid-cols-2 gap-1 p-2 mt-20">
           {products.map((product) => (
