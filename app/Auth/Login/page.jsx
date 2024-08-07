@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import supabase from "@/app/supabaseClient";
 import Loader from "@/app/Loader";
-import Link from "next/link";
+import Link from "next/link"
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+    const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,6 +34,7 @@ const { data, error } = await supabase.auth.signInWithPassword({
     email: formData.email,
     password: formData.password                ,
   })
+  router.push('/Products')
   if(error){
     setError('No account found')
   }
