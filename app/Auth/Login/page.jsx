@@ -23,7 +23,7 @@ const Login = () => {
         return;
       }
       if (session) {
-        const { data: user, error: userError } = await supabase.auth.getUser();
+        const { error: userError } = await supabase.auth.getUser();
         if (userError) {
           await supabase.auth.signOut();
         } else {

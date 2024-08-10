@@ -8,7 +8,7 @@ import supabase from "../supabaseClient";
 import Cart from "../Cart/page";
 
 const Products = ({ addToCart }) => {
-  const [products, setProducts] = useState([]);0
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const[error, setError] = useState(false)
 
