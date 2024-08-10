@@ -12,9 +12,8 @@ const Signup = () => {
   });
   //const [notificationRecieved, setNotificationRecieved] = useState(false)
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
- 
   function handleChange(e) {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -34,13 +33,14 @@ const Signup = () => {
       setError("use a strong password");
       return;
     }
-    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var emailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (!emailRegex.test(email)) {
       setError("use a valid email");
       return;
     }
     try {
-      setLoading(true)
+      setLoading(true);
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -48,19 +48,17 @@ const Signup = () => {
           data: {
             user_name: formData.username,
           },
-          emailRedirectTo: 'https://checkurban.netlify.app/Products'
+          emailRedirectTo: "https://checkurban.netlify.app/Products",
         },
       });
-      console.log(localStorage.getItem('sessionToken'))
 
       alert("check your email for verification");
     } catch (error) {
       console.log(error);
-      setError('no user found')
-    }finally{
-      setError('')
-        setLoading(false)
-      
+      setError("no user found");
+    } finally {
+      setError("");
+      setLoading(false);
     }
   };
 
@@ -106,8 +104,14 @@ const Signup = () => {
         >
           Sign Up
         </button>
-        
-        <p className="text-center pt-4">Already have an account?<Link href='/Auth/Login'> <span className="text-[#1746c3]">Sign In</span></Link></p>
+
+        <p className="text-center pt-4">
+          Already have an account?
+          <Link href="/Auth/Login">
+            {" "}
+            <span className="text-[#1746c3]">Sign In</span>
+          </Link>
+        </p>
       </div>
     </div>
   );

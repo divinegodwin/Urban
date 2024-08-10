@@ -16,9 +16,10 @@ const Login = () => {
 
   useEffect(() => {
     const checkSession = async () => {
-      const { data: session, error: sessionError } = await supabase.auth.getSession();
+      const { data: session, error: sessionError } =
+        await supabase.auth.getSession();
       if (sessionError) {
-        console.error('Session error:', sessionError);
+        console.error("Session error:", sessionError);
         return;
       }
       if (session) {
@@ -31,7 +32,7 @@ const Login = () => {
       }
     };
     checkSession();
-  }, [router]);
+  }, [router]);""
 
   const handleChange = (e) => {
     setFormData((prevFormData) => ({
@@ -62,7 +63,7 @@ const Login = () => {
       }
 
       if (data) {
-        console.log(data)
+        console.log(data);
         router.push("/Products");
       }
     } catch (error) {
