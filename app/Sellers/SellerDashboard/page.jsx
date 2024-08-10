@@ -69,18 +69,15 @@ const SellerDashboard = () => {
 
 
   const ShowForm = () =>{
-    if(plusIconIsClicked){
-      return(
-  
-            Swal.fire({
-              title: "Registeration guide!",
-              text: "Please make sure you fill in the correct details.",
-              icon: "info",
-            })
-        )
-      }
     setPlusIconIsClicked(!plusIconIsClicked)
-    
+    return(
+
+          Swal.fire({
+            title: "Registeration guide!",
+            text: "Please make sure you fill in the correct details.",
+            icon: "info",
+          })
+      )
   }
   return (
     <div>

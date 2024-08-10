@@ -38,6 +38,7 @@ const SellerRegisteration = () => {
     accountName: "",
     phoneNumber: "",
     profilePic: "",
+    address : "",
   });
 
   const handleChange = (e) => {
@@ -109,6 +110,7 @@ const SellerRegisteration = () => {
       account_name: formData.accountName,
       user_id: user.id,
       profile_pic: formData.profilePic,
+      address: formData.address,
     });
     
 
@@ -202,6 +204,16 @@ const SellerRegisteration = () => {
             type="number"
             name="nin"
             placeholder="NIN"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="mb-4">
+          <input
+            type="text"
+            name="address"
+            placeholder="Address..."
             className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
           />
