@@ -8,6 +8,9 @@ import supabase from "@/app/supabaseClient";
 
 const SellerDashboard = () => {
 
+  const[plusIconIsClicked, setPlusIconIsClicked] = useState(false)
+
+
   const [formData, setFormData] = useState({
     productPic: "",
     category: null,
@@ -56,6 +59,7 @@ const SellerDashboard = () => {
             icon: "success",
           }).then(() => {
             console.log("success");
+            setPlusIconIsClicked(false)
           });
         }
       };
@@ -63,7 +67,6 @@ const SellerDashboard = () => {
     }
   };
 
-  const[plusIconIsClicked, setPlusIconIsClicked] = useState(false)
 
   const ShowForm = () =>{
     setPlusIconIsClicked(!plusIconIsClicked)
