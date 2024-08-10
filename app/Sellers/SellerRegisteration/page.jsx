@@ -6,10 +6,12 @@ import { useState, useEffect } from "react";
 import supabase from "@/app/supabaseClient";
 import useUserAuth from "@/app/Auth/useUserAuth";
 import Swal from "sweetalert2";
+import Loader from "@/app/Loader";
 
 const SellerRegisteration = () => {
   const router = useRouter();
   const user = useUserAuth(); // custom hook
+  const [inserting, setInserting] =useState(false)
 
   const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({
@@ -58,7 +60,7 @@ const SellerRegisteration = () => {
     return;
     } 
   
-
+setInserting(true)
     const { data, error } = await supabase.from("Seller").insert({
       shop_name: formData.shopName,
       shop_description: formData.shopDescription,
@@ -88,7 +90,7 @@ const SellerRegisteration = () => {
     <div>
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full">
         <h2 className="text-2xl font-bold mb-6 ">
-          Register as a Seller
+          Register as a Seller at <span className="text-bold text-[#1746c3]">Urban</span>
         </h2>
         {formError &&<p className="text-center text-red-500">{formError}</p>}
         <div className="w-[150px] h-[150px] border-blue-500  mb-4 rounded-full overflow-hidden border-2">
@@ -117,15 +119,15 @@ const SellerRegisteration = () => {
         </div>
 
         <div className="mb-4">
-          <input
+          <textarea
             type="text"
             name="shopDescription"
             placeholder="Shop description"
-            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="h-[100px] w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
           />
         </div>
-
+    
         <div className="mb-4">
           <input
             type="email"
@@ -135,11 +137,13 @@ const SellerRegisteration = () => {
             onChange={handleChange}
           />
         </div>
+        {inserting && <Loader />}
         <div className="mb-4">
-          <input
+          <textarea 
+  
             type="number"
             name="phoneNumber"
-            placeholder="Phone number"
+            placeholder="Phone number eg 23470..."
             className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
           />
