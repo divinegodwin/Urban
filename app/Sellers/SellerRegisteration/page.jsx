@@ -2,11 +2,11 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import useAuth from '@/app/useAuth'
+
 
 const SellerRegisteration = () => {
 
-  const user = useAuth()
+
 
   const[formError, setFormError] = useState('')
   const [formData, setFormData] = useState(
