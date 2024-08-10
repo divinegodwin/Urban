@@ -70,6 +70,7 @@ const SellerDashboard = () => {
 
   const ShowForm = () =>{
     setPlusIconIsClicked(!plusIconIsClicked)
+    if(plusIconIsClicked){
     return(
 
           Swal.fire({
@@ -78,6 +79,7 @@ const SellerDashboard = () => {
             icon: "info",
           })
       )
+    }
   }
   return (
     <div>
