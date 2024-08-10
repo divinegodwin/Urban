@@ -179,7 +179,7 @@ const SellerDashboard = () => {
             onChange={handleChange}
             value={formData.currency}
           >
-            <option value="">Select a ccurrency</option>
+            <option value="">Select a currency</option>
             <option value="N"> N </option>
             <option value="$">$ </option>
             <option value="£">£ </option>
