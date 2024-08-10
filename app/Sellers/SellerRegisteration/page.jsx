@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -45,7 +46,7 @@ const SellerRegisteration = () => {
             type="text"
             name="name"
             placeholder="ShopName"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
           onChange={handleChange}
           />
         </div>
@@ -55,7 +56,7 @@ const SellerRegisteration = () => {
             type="text"
             name="shopDescription"
             placeholder="Shop description"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
 
           />
@@ -66,7 +67,7 @@ const SellerRegisteration = () => {
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
 
 
@@ -77,7 +78,7 @@ const SellerRegisteration = () => {
             type="number"
             name="nin"
             placeholder="Nin"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
 
           />
@@ -87,7 +88,7 @@ const SellerRegisteration = () => {
             type="number"
             name="accountNumber"
             placeholder="Account number"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
 
           />
@@ -97,7 +98,7 @@ const SellerRegisteration = () => {
             type="text"
             name="accountName"
             placeholder="Account name"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1746c3]"
+            className="w-full p-3 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-[#1746c3]"
             onChange={handleChange}
 
           />
