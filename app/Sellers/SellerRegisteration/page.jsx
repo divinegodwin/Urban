@@ -12,8 +12,8 @@ const SellerRegisteration = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       Swal.fire({
-        title: "Welcome!",
-        text: "This alert shows 5 seconds after the window loads.",
+        title: "Registeration Guide",
+        text: "Ensure you fill in the correct information ",
         icon: "info",
       });
     }, 5000); 
