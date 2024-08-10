@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import supabase from "@/app/supabaseClient";
 
 const SellerDashboard = () => {
+
   const [formData, setFormData] = useState({
     productPic: "",
     category: null,
@@ -27,8 +28,11 @@ const SellerDashboard = () => {
   };
 
   const user = useUserAuth();
-
+  const [formError, setFormError] = useState('')
   const SubmitProducts = () => {
+    if(Object.values(formData).some(field => field ===null || field ==="")){
+      setFormError('All fields more be filled')
+    }
     if (user && user?.id) {
       const insertProductDetails = async () => {
         const { error } = await supabase.from("Seller_Products").insert({
@@ -47,8 +51,8 @@ const SellerDashboard = () => {
           console.log("error inserting data into seller_products", error);
         } else {
           Swal.fire({
-            title: "Registration Successful!",
-            text: "Shop registration complete! You're ready to start selling.",
+            title: "Upload Successfull!",
+            text: "your item is now up for sale.",
             icon: "success",
           }).then(() => {
             console.log("success");
@@ -63,6 +67,14 @@ const SellerDashboard = () => {
 
   const ShowForm = () =>{
     setPlusIconIsClicked(!plusIconIsClicked)
+    return(
+
+          Swal.fire({
+            title: "Registeration guide!",
+            text: "Please make sure you fill in the correct details.",
+            icon: "info",
+          })
+      )
   }
   return (
     <div>
@@ -89,11 +101,12 @@ const SellerDashboard = () => {
       </div>
 
       {plusIconIsClicked &&(
-
+      
+          
      
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full mt-[6rem]">
-        <h2 className="text-2xl font-bold mb-6 ">Create a Product</h2>
-
+      <div className=" bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full mt-[6rem]">
+        <h2 className="text-2xl font-bold mb-1 ">Create a Product</h2>
+        {formError &&<p className="text-lg text-red-500 p-3">{formError}</p>}
         <div className="">
           <input
             onChange={handleChange}

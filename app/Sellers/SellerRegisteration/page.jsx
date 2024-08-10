@@ -8,9 +8,23 @@ import Swal from "sweetalert2";
 import Loader from "@/app/Loader";
 
 const SellerRegisteration = () => {
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      Swal.fire({
+        title: "Welcome!",
+        text: "This alert shows 5 seconds after the window loads.",
+        icon: "info",
+      });
+    }, 5000); 
+
+    return () => clearTimeout(timer);
+  }, []); 
+
   const router = useRouter();
-  const user = useUserAuth(); // custom hook
+  const user = useUserAuth(); 
   console.log(user);
+
   const [inserting, setInserting] = useState(false);
   const [loading, setLoading] = useState(true);
 
