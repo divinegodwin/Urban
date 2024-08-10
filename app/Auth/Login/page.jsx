@@ -32,7 +32,7 @@ const Login = () => {
       }
     };
     checkSession();
-  }, [router]);""
+  }, [router]);
 
   const handleChange = (e) => {
     setFormData((prevFormData) => ({
@@ -76,6 +76,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
         {error && <p className="text-red-500 text-lg">{error}</p>}

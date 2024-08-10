@@ -83,7 +83,7 @@ useEffect(()=>{
       <nav
         className={
           isOpen
-            ? " nav fixed w-full top-0 flex flex-col mt-[3.4rem] h-[220px] bg-white shadow-sm items-center pt-4 text-md"
+            ? " nav fixed w-full top-0 flex flex-col mt-[3.4rem] h-[260px] bg-white shadow-sm items-center pt-4 text-md"
             : "close hidden"
         }
       >
@@ -93,6 +93,7 @@ useEffect(()=>{
           </Link>
           <li className="p-2">About</li>
           <li className="p-2">Contact</li>
+          <Link href='/Sellers/SellerRegisteration'><li className="p-2">My Shop</li></Link>
           <button onClick={handleLogout} className="center p-3 bg-[#1746c3] h-[50px] text-white rounded-lg">Logout</button>
         </ul>
       </nav>
