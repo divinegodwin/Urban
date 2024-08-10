@@ -140,7 +140,7 @@ const SellerRegisteration = () => {
           <img
             src={formData.profilePic}
             className="w-full h-full object-cover"
-            alt="Profile"
+            
           />
         </div>
         <div className="flex justify-center">
