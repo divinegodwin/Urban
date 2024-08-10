@@ -20,7 +20,7 @@ useEffect(()=>{
   const getUser = async () =>{
     const {data, error} = await supabase.auth.getUser()
     if(data){
-      console.log(data.user.user_metadata.user_name)
+  
       setDisplayName(data.user.user_metadata.user_name)
     }else{
       console.log(error)
