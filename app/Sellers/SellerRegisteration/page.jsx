@@ -110,6 +110,7 @@ const SellerRegisteration = () => {
       user_id: user.id,
       profile_pic: formData.profilePic,
     });
+    
 
     if (error) {
       console.log(error);
@@ -120,8 +121,9 @@ const SellerRegisteration = () => {
         text: "Shop registration complete! You're ready to start selling.",
         icon: "success",
       }).then(() => {
-        router.push("/Seller/SellerDashboard");
+        router.push("/Sellers/SellerDashboard");
       });
+      console.log(data)
     }
   };
 
