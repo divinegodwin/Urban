@@ -58,7 +58,7 @@ const Products = ({ addToCart }) => {
            
             </div>
           ))}
-          <Cart />
+      
         </div>
       )}
     </main>
