@@ -164,6 +164,7 @@ const SellerDashboard = () => {
             >
               <option value="electronics">select the category </option>
               <option value="phones & tablets">phones & tablets </option>
+              <option value="Watches"> Watches </option>
               <option value="shoes"> Shoes </option>
               <option value="bags">Bags </option>
               <option value="shirts"> Shirts</option>
