@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import supabase from '../supabaseClient'
 
-const useUserAuth = () => {
+const useUserAuth = () => {  
     const [user, setUser] = useState(null)
     useEffect(()=>{
         const getUser = async () =>{

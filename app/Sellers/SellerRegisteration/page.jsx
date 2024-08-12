@@ -6,9 +6,9 @@ import supabase from "@/app/supabaseClient";
 import useUserAuth from "@/app/Auth/useUserAuth";
 import Swal from "sweetalert2";
 import Loader from "@/app/Loader";
+import Navbar from "@/app/components/Navbar";
 
 const SellerRegisteration = () => {
-
   useEffect(() => {
     const timer = setTimeout(() => {
       Swal.fire({
@@ -16,13 +16,13 @@ const SellerRegisteration = () => {
         text: "Ensure you fill in the correct information ",
         icon: "info",
       });
-    }, 5000); 
+    }, 5000);
 
     return () => clearTimeout(timer);
-  }, []); 
+  }, []);
 
   const router = useRouter();
-  const user = useUserAuth(); 
+  const user = useUserAuth();
   console.log(user);
 
   const [inserting, setInserting] = useState(false);
@@ -38,7 +38,7 @@ const SellerRegisteration = () => {
     accountName: "",
     phoneNumber: "",
     profilePic: "",
-    address : "",
+    address: "",
   });
 
   const handleChange = (e) => {
@@ -87,7 +87,9 @@ const SellerRegisteration = () => {
   }, [user, user?.id, router]);
 
   const SubmitRegisteration = async () => {
-    if (Object.values(formData).some((field) => field === "" || field === null)) {
+    if (
+      Object.values(formData).some((field) => field === "" || field === null)
+    ) {
       setFormError("All fields must be filled");
       return;
     }
@@ -112,11 +114,10 @@ const SellerRegisteration = () => {
       profile_pic: formData.profilePic,
       address: formData.address,
     });
-    
 
     if (error) {
       console.log(error);
-      setInserting(false); 
+      setInserting(false);
     } else {
       Swal.fire({
         title: "Registration Successful!",
@@ -125,7 +126,7 @@ const SellerRegisteration = () => {
       }).then(() => {
         router.push("/Sellers/SellerDashboard");
       });
-      console.log(data)
+      console.log(data);
     }
   };
 
@@ -135,16 +136,17 @@ const SellerRegisteration = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full">
         <h2 className="text-2xl font-bold mb-6">
-          Register as a Seller at <span className="text-bold text-[#1746c3]">Urban</span>
+          Register as a Seller at{" "}
+          <span className="text-bold text-[#1746c3]">Urban</span>
         </h2>
         {formError && <p className="text-center text-red-500">{formError}</p>}
         <div className="w-[150px] h-[150px] border-blue-500 mb-4 rounded-full overflow-hidden border-2">
           <img
             src={formData.profilePic}
             className="w-full h-full object-cover"
-            
           />
         </div>
         <div className="flex justify-center">
