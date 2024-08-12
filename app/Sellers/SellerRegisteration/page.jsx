@@ -138,7 +138,7 @@ const SellerRegisteration = () => {
     <div>
       <Navbar />
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full">
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-bold mt-[4rem] mb-6">
           Register as a Seller at{" "}
           <span className="text-bold text-[#1746c3]">Urban</span>
         </h2>

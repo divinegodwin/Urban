@@ -4,12 +4,15 @@ import Navbar from "../components/Navbar";
 import supabase from "../supabaseClient";
 import { useState, useEffect } from "react";
 import useUserAuth from "../Auth/useUserAuth";
+import Loader from "../Loader";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true)
       console.log("fetching products");
       try {
         const { data, error } = await supabase.from("Seller_Products").select();
@@ -22,6 +25,8 @@ const Products = () => {
         console.log(data[0].product_image);
       } catch (error) {
         console.log(error);
+      }finally{
+        setLoading(false)
       }
     };
     fetchProducts();
@@ -30,24 +35,30 @@ const Products = () => {
   return (
     <div>
       <Navbar />
-
+      {loading && <Loader />}
+     
       {products.length > 0 ? (
        
-        <div className="mt-[7rem]">
+        <div className="mt-[7rem] flex p-2 gap-5 ml-2">
           {products.map((product) => {
             console.log(product.product_image)
             return(
-            <div key={product.id} className="w-[50%] h-[320px] ml-2 bg-slate-200 text-center rounded-2xl shadow-lg ">
+            <div key={product.id} className=" w-[45%] h-[320px]  bg-slate-200 text-center rounded-2xl shadow-lg ">
               <img src={product.product_image}></img>
-              <p className="font-bold text-lg ">{product.product_name}</p>
+              <p className="font-bold text-lg pt-4 ">{product.product_name}</p>
               <p>{product.product_description}</p>
-              <p className="font-mono font-bold">{product.currency}{product.product_price}</p>
+              <p className="font-mono text-lg font-bold">{product.currency}{product.product_price}</p>
             </div>
+            
             )
-})}
+            
+})
+}
+
         </div>
       ) : (
         <p>no product</p>
+       
       )}
     </div>
   );
