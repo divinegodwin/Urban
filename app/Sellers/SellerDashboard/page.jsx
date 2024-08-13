@@ -8,6 +8,10 @@ import supabase from "@/app/supabaseClient";
 import Loader from "@/app/Loader";
 
 const SellerDashboard = () => {
+
+  const user = useUserAuth();
+
+
   const [plusIconIsClicked, setPlusIconIsClicked] = useState(false);
   const [isInserting, setIsInserting] = useState(false)
 
@@ -69,7 +73,6 @@ const SellerDashboard = () => {
     }));
   };
 
-  const user = useUserAuth();
   const [formError, setFormError] = useState("");
   const SubmitProducts = () => {
     if (
@@ -117,13 +120,39 @@ const SellerDashboard = () => {
       icon: "info",
     });
   };
+
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(()=>{
+  
+   const  fetchSellerProducts = async() =>{
+      try {
+        const { data, error } = await supabase.from("Seller_Products")
+        .select()
+        .eq('seller_id', user.id)
+          if(data){
+            setProducts(data)
+          }
+      } catch (error) {
+        console.log('can not fetch seller products', error)
+        setLoading(false)
+      }finally{
+        setLoading(false)
+      }
+   }
+   fetchSellerProducts()
+
+  })
   return (
     <div>
       <Navbar />
-      <div className="mt-[5rem]">
+      {loading && <Loader />}
+
+      <div className="mt-[5rem] w-full">
         <svg
           onClick={ShowForm}
-          className="w-[30px] float-right mr-8 "
+          className="w-[30px] float-right mr-2"
           data-slot="icon"
           fill="none"
           strokeWidth="1.5"
@@ -140,8 +169,28 @@ const SellerDashboard = () => {
         </svg>
       </div>
 
+
+
+      {products && products.length > 0 ? (
+       
+       <div className="mt-[4rem] flex p-2 gap-5 ml-2 w-full">
+         {products.map((product) => (
+           
+           <div key={product.id} className=" w-[45%] h-fit pb-4  bg-slate-200 text-center rounded-2xl shadow-lg ">
+             <img src={product.product_image}></img>
+             <p className="font-bold text-lg pt-4 ">{product.product_name}</p>
+             <p>{product.product_description}</p>
+             <p className="font-mono text-lg font-bold">{product.currency}{product.product_price}</p>
+           </div>
+           
+           ))
+          }
+          </div>
+          ):<p>Create a Product to sell</p>
+          }
+           
       {plusIconIsClicked && (
-        <div className=" bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full mt-[6rem]">
+        <div className=" bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full mt-[5rem] absolute top-8">
           <h2 className="text-2xl font-bold mb-1 ">Create a Product</h2>
           {formError && <p className="text-lg text-red-500 p-3">{formError}</p>}
           <div className="">

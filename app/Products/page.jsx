@@ -80,7 +80,7 @@ const Products = () => {
 
         </div>
       ) : (
-        <p>no product</p>
+        <p></p>
        
       )}
     </div>

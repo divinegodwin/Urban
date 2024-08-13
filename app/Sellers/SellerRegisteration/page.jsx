@@ -70,7 +70,7 @@ const SellerRegisteration = () => {
       if (user && user.id) {
         const { data: availableSeller, error } = await supabase
           .from("Seller")
-          .select("*")
+          .select()
           .eq("user_id", user.id);
 
         if (error) {
