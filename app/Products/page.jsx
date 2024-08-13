@@ -37,7 +37,7 @@ const Products = () => {
       <Navbar />
       {loading && <Loader />}
 
-     <div className="mt-[6rem] w-full  pl-1 flex overflow-x-auto overflow-y-hidden space-x-1">
+     <div className="mt-[6rem] w-full  pl-1 flex overflow-x-auto overflow-y-hidden space-x-1 scrollbar-hide">
      <div className="flex items-center justify-center py-1 text-sm bg-[#dfdfdf] m-w-[190px] px-3 h-[40px] rounded-full">
   <p className="whitespace-nowrap">Phones & Tablets</p>
 </div>
