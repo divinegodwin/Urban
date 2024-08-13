@@ -179,7 +179,7 @@ const SellerDashboard = () => {
         
       {products.length > 0 ? (
        
-       <div className="mt-[1rem] grid py-6 grid-cols-2 p-2 gap-4 w-full ml-2">
+       <div className="mt-[1rem] grid py-6 grid-cols-2 p-2 gap-4 w-full ">
          {products.map((product) => {
            console.log(product.product_image)
            return(
@@ -190,8 +190,7 @@ const SellerDashboard = () => {
              <p className="font-mono text-lg font-bold">{product.currency}{product.product_price}</p>
            </div>
            
-           )
-           
+          )          
 })
 }
 
