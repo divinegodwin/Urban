@@ -176,23 +176,30 @@ const SellerDashboard = () => {
 
 
 
-      {products && products.length > 0 ? (
+        
+      {products.length > 0 ? (
        
-       <div className="mt-[4rem] flex p-2 gap-5 ml-2 w-full">
-         {products.map((product) => (
-           
-           <div key={product.id} className=" w-[45%] h-fit pb-4  bg-slate-200 text-center rounded-2xl shadow-lg ">
+       <div className="mt-[1rem] grid py-6 grid-cols-2 p-2 gap-4 w-full ml-2">
+         {products.map((product) => {
+           console.log(product.product_image)
+           return(
+           <div key={product.id} className=" w-[100%] h-fit pb-4  mb-3 bg-slate-200 text-center rounded-2xl shadow-lg ">
              <img src={product.product_image}></img>
              <p className="font-bold text-lg pt-4 ">{product.product_name}</p>
              <p>{product.product_description}</p>
              <p className="font-mono text-lg font-bold">{product.currency}{product.product_price}</p>
            </div>
            
-           ))
-          }
-          </div>
-          ):<p>Create a Product to sell</p>
-          }
+           )
+           
+})
+}
+
+       </div>
+     ) : (
+       <p></p>
+      
+     )}
            
       {plusIconIsClicked && (
         <div className=" bg-white p-8 rounded-lg shadow-lg max-w-md m-auto w-full mt-[5rem] absolute top-8">
