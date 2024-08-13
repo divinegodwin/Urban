@@ -37,7 +37,7 @@ const Products = () => {
       <Navbar />
       {loading && <Loader />}
 
-     <div className="mt-[4.3rem] fixed h-[70px] pt-4 bg-white shadow-lg w-full  pl-1 flex overflow-x-auto overflow-y-hidden space-x-1 scrollbar-hide">
+     <div className="mt-[3.2rem] fixed h-[60px] pt-2 bg-white shadow-lg w-full  pl-1 flex overflow-x-auto overflow-y-hidden space-x-1 scrollbar-hide">
      <div className="flex items-center justify-center py-1 text-sm bg-[#dfdfdf] m-w-[190px] px-3 h-[40px] rounded-full">
   <p className="whitespace-nowrap">Phones & Tablets</p>
 </div>
@@ -62,11 +62,11 @@ const Products = () => {
      
       {products.length > 0 ? (
        
-        <div className="mt-[1 rem] grid py-6 grid-cols-2 p-2 gap-2 w-full ml-2">
+        <div className="mt-[1rem] pt-[8rem] grid py-6 grid-cols-2 p-2 gap-4 w-full ml-2">
           {products.map((product) => {
             console.log(product.product_image)
             return(
-            <div key={product.id} className=" w-[100%] h-fit pb-4  bg-slate-200 text-center rounded-2xl shadow-lg ">
+            <div key={product.id} className=" w-[100%] h-fit pb-4  mb-3 bg-slate-200 text-center rounded-2xl shadow-lg ">
               <img src={product.product_image}></img>
               <p className="font-bold text-lg pt-4 ">{product.product_name}</p>
               <p>{product.product_description}</p>
