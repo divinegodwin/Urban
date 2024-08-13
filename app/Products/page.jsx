@@ -33,7 +33,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       {loading && <Loader />}
 
