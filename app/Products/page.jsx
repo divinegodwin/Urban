@@ -33,14 +33,15 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Navbar />
       {loading && <Loader />}
 
-     <div className="mt-[6rem] w-[700px] pl-1 flex overflow-x-auto overflow-y-hidden space-x-1">
-  <div className="py-2 text-sm bg-[#dfdfdf] w-fit px-5 h-[40px] rounded-full text-center flex items-center justify-center">
-    <p>Phones & Tablets</p>
-  </div>
+     <div className="mt-[6rem] w-full  pl-1 flex overflow-x-auto overflow-y-hidden space-x-1">
+     <div className="flex items-center justify-center py-1 text-sm bg-[#dfdfdf] m-w-[190px] px-3 h-[40px] rounded-full">
+  <p className="whitespace-nowrap">Phones & Tablets</p>
+</div>
+
   <div className="py-2 text-sm bg-[#dfdfdf] w-fit px-5 h-[40px] rounded-full text-center flex items-center justify-center">
     <p>Laptops</p>
   </div>

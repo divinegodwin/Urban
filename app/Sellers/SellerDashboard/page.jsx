@@ -164,13 +164,12 @@ const SellerDashboard = () => {
             >
               <option value="electronics">select the category </option>
               <option value="phones & tablets">phones & tablets </option>
-              <option value="Watches"> Watches </option>
-              <option value="shoes"> Shoes </option>
-              <option value="bags">Bags </option>
-              <option value="shirts"> Shirts</option>
-              <option value="Foodstufs"> FoodStufs</option>
-              <option value="caps"> Cap </option>
-              <option value="electronics"> Gaming</option>
+              <option value="Laptops"> Laptops </option>
+              <option value="Accessories"> Accessories </option>
+              <option value="Wearables">Bags </option>
+              <option value="Gaming"> Shirts</option>
+              <option value="Food stuffs"> FoodStufs</option>
+              
             </select>
           </div>
           <div className="mb-4">
