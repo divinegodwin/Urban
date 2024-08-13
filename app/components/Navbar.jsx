@@ -83,7 +83,7 @@ useEffect(()=>{
       <nav
         className={
           isOpen
-            ? " nav fixed w-full top-0 flex flex-col mt-[3.4rem] h-[260px] bg-white shadow-sm items-center pt-4 text-md"
+            ? " nav fixed w-full top-0 flex flex-col mt-[3.4rem] overflow-auto z-10  h-[260px] bg-white shadow-sm items-center pt-4 text-md"
             : "close hidden"
         }
       >
