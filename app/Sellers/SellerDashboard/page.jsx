@@ -97,6 +97,11 @@ const SellerDashboard = () => {
         });
         if (error) {
           console.log("error inserting data into seller_products", error);
+          Swal.fire({
+            title: "Oops!",
+            text: "Your product failed to upload.",
+            icon: "error",
+          })
         } else {
           Swal.fire({
             title: "Upload Successfull!",

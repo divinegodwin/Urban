@@ -62,7 +62,7 @@ const Products = () => {
      
       {products.length > 0 ? (
        
-        <div className="mt-[1 rem] flex p-2 gap-5 ml-2">
+        <div className="mt-[1 rem] grid grid-cols-2 p-2 gap-5 ml-2">
           {products.map((product) => {
             console.log(product.product_image)
             return(
