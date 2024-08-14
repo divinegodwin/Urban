@@ -165,3 +165,22 @@ body{
    .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .drop-modal{
+    animation: drop-modal 0.2s ease-in;
+    scroll-behavior: smooth;
+  }
+  @keyframes drop-modal{
+    from{
+      left: 100px;
+      
+      height: 0px;
+    }
+    to{
+      height: max-content;
+      left: 0px;
+    }
+  }
+
+  
+  

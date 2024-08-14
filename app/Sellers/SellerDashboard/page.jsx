@@ -6,11 +6,9 @@ import useUserAuth from "@/app/Auth/useUserAuth";
 import Swal from "sweetalert2";
 import supabase from "@/app/supabaseClient";
 import Loader from "@/app/Loader";
-
 const SellerDashboard = () => {
 
-  const user = useUserAuth();
-
+  const user = useUserAuth()
 
   const [plusIconIsClicked, setPlusIconIsClicked] = useState(false);
   const [isInserting, setIsInserting] = useState(false)

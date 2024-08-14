@@ -88,7 +88,7 @@ const SellerRegisteration = () => {
 
   const SubmitRegisteration = async () => {
     if (
-      Object.values(formData).some((field) => field === "" || field === null)
+      Object.values(formData).some((field) => field == "" || field === null)
     ) {
       setFormError("All fields must be filled");
       return;
