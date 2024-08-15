@@ -151,7 +151,8 @@ const Cart = () => {
             </div>
         </div>
       ) : (
-        <p>Loading carts....</p>
+        <p className="text-center mt-8">Loading carts....</p>
+       
       )}
     </div>
   );
