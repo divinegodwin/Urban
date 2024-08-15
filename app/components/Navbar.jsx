@@ -91,9 +91,10 @@ useEffect(()=>{
           <Link href='/Products'>
           <li className="p-2">Products</li>
           </Link>
-          <li className="p-2">About</li>
-          <li className="p-2">Contact</li>
           <Link href='/Sellers/SellerRegisteration'><li className="p-2">My Shop</li></Link>
+          <li className="p-2">Contact</li>
+          <li className="p-2">Settigns</li>
+         
         </ul>
         <button onClick={handleLogout} className=" w-[140px] center p-3 mt-2 bg-[#1746c3] h-[50px] text-white rounded-lg">Logout</button>
       </nav>
