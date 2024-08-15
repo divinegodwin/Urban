@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import supabase from "../supabaseClient";
 import { useState, useEffect } from "react";
 import Loader from "../Loader";
+import useUserAuth from "../Auth/useUserAuth";
+import Swal from "sweetalert2";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -42,7 +44,7 @@ const Products = () => {
     setModalIsClosed(false);
   };
 
-  const [orderQuantity, setOrderQuantity] = useState(0)
+  const [orderQuantity, setOrderQuantity] = useState(1)
   const addQuantity = () =>{
       setOrderQuantity((previousQuantity)=> previousQuantity+1)
   }
@@ -54,6 +56,37 @@ const Products = () => {
     }
     }
 
+    //getting current user details
+    const user = useUserAuth()
+    const addToCart =async()=>{
+      try{
+        const {data, error} = await supabase.from('Carts').insert([
+          {
+            user_id : user.id ,
+            product_id : selectedProduct.id,
+            product_name : selectedProduct.product_name ,
+            currency : selectedProduct.currency ,
+            price : selectedProduct.product_price,
+            image_url : selectedProduct.product_image ,
+            quantity : orderQuantity,
+            description : selectedProduct.product_description
+          }
+        ])
+        console.log(data)
+        if(error) throw error
+        console.log('product added to cart', data)
+        Swal.fire({
+          title: "Added to Cart",
+          text: `${selectedProduct.product_name} has beign added to cart`,
+          icon: "success",
+          timer: 2500,
+        })
+        closeModal()
+    }catch (error){
+      console.log('error adding product to cart', error)
+    }
+  
+  }
 
   return (
     <div>
@@ -96,7 +129,7 @@ const Products = () => {
                   {product.product_name}
                 </p>
                
-                <p className="font-mono text-xl font-bold">
+                <p className=" text-[16px] font-bold">
                   {product.currency}
                   {product.product_price}
                 </p>
@@ -203,7 +236,9 @@ const Products = () => {
               </svg>
             </div>
             <div className="flex justify-center mb-5">
-              <button className="mb-6 w-[180px] h-[50px] bg-slate-200 rounded-full mt-4 border-none text-[#000]">
+              <button
+              onClick={addToCart}
+              className="mb-6 w-[180px] h-[50px] bg-slate-200 rounded-full mt-4 border-none text-[#000]">
                 {" "}
                 Add to Cart
               </button>
