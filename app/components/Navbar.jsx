@@ -51,7 +51,7 @@ useEffect(()=>{
           <div className="flex gap-[1rem]">
             <Link href="/Cart">
             <div>
-              <div className="w-[20px] h-[20px] rounded-full bg-red-600 top-2 right-[3.4rem] absolute text-[12px] text-center text-[#ffff]">0</div>
+              <div className="w-[20px] h-[20px] rounded-full bg-red-600 top-3 right-[3.4rem] absolute text-[12px] text-center text-[#ffff]">0</div>
               <svg
               className="w-[30px]"
                 data-slot="icon"
