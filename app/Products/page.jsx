@@ -92,11 +92,11 @@ const Products = () => {
                 className=" w-[100%] h-fit pb-4  mb-3 bg-slate-200 text-center rounded-2xl shadow-lg "
               >
                 <img src={product.product_image}></img>
-                <p className="font-bold text-lg pt-4 ">
+                <p className="text-md pt-4 ">
                   {product.product_name}
                 </p>
-                <p>{product.product_description}</p>
-                <p className="font-mono text-lg font-bold">
+               
+                <p className="font-mono text-xl font-bold">
                   {product.currency}
                   {product.product_price}
                 </p>
