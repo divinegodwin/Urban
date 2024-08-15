@@ -41,7 +41,7 @@ useEffect(()=>{
 
   return (
     <div>
-      <main className="bg-[#ffff] h-[60px] fixed top-0 w-full shadow-lg p-4 flex justify-between items-center">
+      <main className="bg-[#ffff] h-[66px] fixed top-0 w-full shadow-lg p-4 flex justify-between items-center">
         <div className="flex flex-col">
         <header className="font-bold text-2xl text-[#1746c3]">Urban</header>
         <div><p3><span className="text-[#1746c3] font-bold text-md">Welcome,</span> {displayName}.</p3></div>
@@ -50,6 +50,8 @@ useEffect(()=>{
         <div className="flex items-center gap-[5rem]">
           <div className="flex gap-[1rem]">
             <Link href="/Cart">
+            <div>
+              <div className="w-[20px] h-[20px] rounded-full bg-red-600 top-2 right-[3.4rem] absolute text-[12px] text-center text-[#ffff]">0</div>
               <svg
               className="w-[30px]"
                 data-slot="icon"
@@ -66,6 +68,7 @@ useEffect(()=>{
                   d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                 ></path>
               </svg>
+              </div>
             </Link>
 
             <Image
