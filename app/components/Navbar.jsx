@@ -15,19 +15,34 @@ const Navbar = () => {
   };
 
   const [displayName, setDisplayName] = useState('')
+  const [isBoss, setIsBoss] = useState(false)
 
-useEffect(()=>{
-  const getUser = async () =>{
-    const {data, error} = await supabase.auth.getUser()
-    if(data){
+  useEffect(() => {
+    const getUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      let userName;
+      if (error) {
+        console.log(error.message); 
+        return;
+      }
   
-      setDisplayName(data.user.user_metadata.user_name)
-    }else{
-      console.log(error)
-    }
-  }
-  getUser()
-},[])
+      if (data && data.user) {
+        userName = data.user.user_metadata?.user_name;
+  
+        if (userName) {
+          setDisplayName(userName);
+        }
+  
+        if (( userName) ==='Divine') {
+         
+          setDisplayName(`${userName}(Boss)`)
+        }
+      }
+    };
+  
+    getUser();
+  }, []);
+  
 
   const handleLogout = async () =>{
       const{error} = await supabase.auth.signOut()
@@ -44,7 +59,7 @@ useEffect(()=>{
       <main className="bg-[#ffff] h-[66px] fixed top-0 w-full shadow-lg p-4 flex justify-between items-center">
         <div className="flex flex-col">
         <header className="font-bold text-2xl text-[#1746c3]">Urban</header>
-        <div><p3><span className="text-[#1746c3] font-bold text-md">Welcome,</span> {displayName}.</p3></div>
+        <div><p><span className="text-[#1746c3] font-bold text-md">Welcome,</span> {displayName}.</p></div>
         </div>
 
         <div className="flex items-center gap-[5rem]">
