@@ -12,7 +12,6 @@ const Cart = () => {
   const [orderQuantity, setOrderQuantity] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-
   // Fetch cart data
   useEffect(() => {
     const fetchCart = async () => {
@@ -30,19 +29,16 @@ const Cart = () => {
     };
     fetchCart();
   }, [user]);
-
   // Increase quantity
   const addQuantity = () => {
     setOrderQuantity((previousQuantity) => previousQuantity + 1);
   };
-
   // Decrease quantity
   const removeQuantity = () => {
     if (orderQuantity > 0) {
       setOrderQuantity((previousQuantity) => previousQuantity - 1);
     }
   };
-
   // Calculate the total number of unique products in the cart
   useEffect(() => {
     const countUniqueProducts = () => {
@@ -51,7 +47,6 @@ const Cart = () => {
     };
     countUniqueProducts();
   }, [carts]);
-
   // Calculate the total price of products in the cart
   useEffect(() => {
     const checkTotalPrice = () => {
@@ -66,9 +61,9 @@ const Cart = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar totalProducts={totalProducts} />
 
-      <div className="bg-[#F3FAE1] p-4 flex text-[#000] mt-[4.5rem] justify-between">
+      <div className="bg-[#e9ecef] h-[60px] p-4 flex text-[#000] mt-[5rem] justify-between">
         <p>Subtotal</p>
         <p className="font-bold">{totalPrice}</p>
       </div>
@@ -81,7 +76,7 @@ const Cart = () => {
         carts.map((cart) => (
           <div
             key={cart.product_id}
-            className="h-[180px] flex-col gap-6 w-[95%] rounded-lg m-auto mb-[1rem] bg-[#F3FAE1]"
+            className="h-[180px] flex-col gap-6 w-[95%] rounded-lg m-auto mb-[1rem] bg-[#e9ecef]"
           >
             <div className="float-right pr-4 pt-4  mb-2 ">
             <svg 
@@ -92,9 +87,9 @@ const Cart = () => {
               class="main-grid-item-icon"
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
             >
          <polyline points="3 6 5 6 21 6" />
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
