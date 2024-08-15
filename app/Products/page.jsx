@@ -203,7 +203,7 @@ const Products = () => {
               </svg>
             </div>
             <div className="flex justify-center mb-5">
-              <button className=" w-[180px] h-[50px] bg-slate-200 rounded-full mt-4 border-none text-[#000]">
+              <button className="mb-6 w-[180px] h-[50px] bg-slate-200 rounded-full mt-4 border-none text-[#000]">
                 {" "}
                 Add to Cart
               </button>
