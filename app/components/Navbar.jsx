@@ -70,7 +70,7 @@ console.log(totalProducts)
             <Link href="/Cart">
               <div>
                 <div className="w-[20px] h-[20px] rounded-full bg-red-600 top-3 right-[3.4rem] absolute text-[12px] text-center text-[#ffff]">
-                 {totalProducts}
+                {totalProducts? {totalProducts} : 0}
                 </div>
                 <svg
                   className="w-[30px]"
